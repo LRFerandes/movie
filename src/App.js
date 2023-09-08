@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Logo from "./img/sala-cinema.jpg";
 
 function App() {
+
+  const estiloDoFundo = {
+    backgroundImage: `url(${Logo})`, 
+    backgroundSize: 'cover',                 
+    backgroundRepeat: 'no-repeat',
+             
+
+  };
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main' style={estiloDoFundo}>
+      <div className='boxForm'>
+        <form className='form'>
+          
+          <input type='text' id='name' placeholder='Filme'></input>
+          
+          <input type='text' id='genero' placeholder='genero'></input>
+          
+          <input type='text' id='horario' placeholder='Horario'></input>
+         
+          <input type='text' id='data' placeholder='data'></input>
+        
+          <input type='text' id='local' placeholder='local'></input>
+          
+        </form>
+        <button className='button'>
+            Create
+          </button>
+      </div>
+ 
     </div>
   );
 }
