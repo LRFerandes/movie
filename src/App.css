@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@800&display=swap');
+
+
 .main{
   background-color: red;
   width: auto;
   height: 100vh;
-  background-image: ;
 }
 .boxForm{
   background-color: white;
@@ -31,6 +33,9 @@ input{
   width: 275px;
   border: none;
   border-bottom: 1px solid gray;
+
+  font-size: 15px;
+  font-family: 'Kanit', sans-serif;
 }
 input:hover{
   border:none;
@@ -43,8 +48,10 @@ input:hover{
   background-color: rgb(187, 2, 2);
   border-radius: 30px;
   margin-left: 33%;
-  margin-top: 18%;
+  margin-top: 15%;
   cursor: pointer;
+
+  font-family: 'Kanit', sans-serif;
 }
 .button:hover{
   background-color: rgb(255, 0, 0);
