@@ -1,7 +1,5 @@
 import React from "react";
 
-import NavbarItem from "./NavbarItem";
-
 import 'bootswatch/dist/simplex/bootstrap.css';
 
 
@@ -48,8 +46,6 @@ function NavBar() {
                     <li className="nav-item">
                     <a className="nav-link" href="/TabelaMovie">ListMovie</a>
                     </li>
-
-                    <NavbarItem  href="/viewUsers" label="Usuários" />
                 </ul>
                 </div>
             </div>

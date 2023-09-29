@@ -1,6 +1,9 @@
 import React from 'react';
 import 'bootswatch/dist/simplex/bootstrap.css';
+
 import axios from 'axios';
+
+import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
 
 export default class CreateSession extends React.Component{
 
@@ -23,10 +26,10 @@ export default class CreateSession extends React.Component{
         'Content-Type': 'application/json',
       })
       .then(response => {
-        alert('Session criado com sucesso');
+        showSuccessMessage("");
       })
       .catch(error => {
-        alert('Erro ao criar Session');
+        showErrorMessage("");
       });
       
     };

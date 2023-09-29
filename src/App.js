@@ -5,6 +5,8 @@ import 'bootswatch/dist/simplex/bootstrap.css';
 import NavBar from './Screens/Components/NavBar';
 import AppRoutes from './Screens/Components/AppRoutes';
 
+import 'toastr/build/toastr.css';
+import 'toastr/build/toastr.min.js';
 
 function App() {
   return (

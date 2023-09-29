@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootswatch/dist/simplex/bootstrap.css';
 import axios from 'axios';
 
+import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
 
 export default class CreateMovie extends React.Component {
 
@@ -24,10 +25,10 @@ export default class CreateMovie extends React.Component {
       'Content-Type': 'application/json',
     })
     .then(response => {
-      alert('Movie criado com sucesso');
+      showSuccessMessage("");
     })
     .catch(error => {
-      alert('Erro ao criar Movie');
+      showErrorMessage("");
     });
     
   };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
+
 import 'bootswatch/dist/simplex/bootstrap.css';
 
 class TabelaMovie extends Component {

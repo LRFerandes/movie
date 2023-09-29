@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootswatch/dist/simplex/bootstrap.css';
 import axios from 'axios';
 
+import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
+
 
 export default class DeleteSession extends React.Component {
 
@@ -15,10 +17,10 @@ export default class DeleteSession extends React.Component {
 
     axios.delete(`http://localhost:8080/Session/${this.state.id}`,)
     .then(response => {
-      alert('Delete realizado');
+      showSuccessMessage("");
     })
     .catch(error => {
-      alert('Erro ao criar Movie');
+      showErrorMessage("");
     });
     
   };
