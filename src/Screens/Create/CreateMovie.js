@@ -15,6 +15,16 @@ export default class CreateMovie extends React.Component {
   }
 
   create = () => {
+
+    const errors = this.validate();
+
+    if(errors.length > 0){
+      errors.forEach( (message, index) => {
+          showErrorMessage(message);
+      } );
+      return false;
+  }
+
     const MovieDto = {
       nome:this.state.nome,
       genero:this.state.genero
@@ -32,11 +42,26 @@ export default class CreateMovie extends React.Component {
     });
     
   };
+
+  validate = () => {
+    const errors = [];
+
+    if(!this.state.nome){
+        errors.push('Campo Nome é obrigatório!');
+    }
+
+    if(!this.state.genero){
+        errors.push('Campo Genero é obrigatório!');
+    }
+
+    return errors;
+}
   
   render() {
     return (
      
       <div className='main'>
+        <h1>Create Movie</h1>
         <div className="form-group">
           <label className="col-form-label mt-4" for="inputDefault">Nome</label>
           <input type="text" className="form-control" placeholder="Nome" id="inputDefault" onChange={(e) => {this.setState({nome:e.target.value})}}/>

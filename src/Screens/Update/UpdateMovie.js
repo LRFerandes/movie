@@ -17,6 +17,16 @@ export default class UpdateMovie extends React.Component {
   }
 
   create = () => {
+
+    const errors = this.validate();
+
+    if(errors.length > 0){
+      errors.forEach( (message, index) => {
+          showErrorMessage(message);
+      } );
+      return false;
+  }
+
     const MovieDto = {
       nome:this.state.nome,
       genero:this.state.genero
@@ -34,14 +44,36 @@ export default class UpdateMovie extends React.Component {
     });
     
   };
+
+  validate = () => {
+
+    const errors = [];
+
+    if(!this.state.id){
+        errors.push('Campo id é obrigatório!');
+    }
+
+    if(!this.state.nome){
+      errors.push('Campo Nome é obrigatório!');
+  }
+
+  if(!this.state.genero){
+      errors.push('Campo Genero é obrigatório!');
+  }
+
+    return errors;
+
+  }
+
   
   render() {
     return (
      
       <div className='main'>
+        <h1>Update Movie</h1>
         <div className="form-group">
           <label className="col-form-label mt-4" for="inputDefault">id</label>
-          <input type="number" className="form-control" placeholder="Nome" id="inputDefault" onChange={(e) => {this.setState({id:e.target.value})}}/>
+          <input type="number" className="form-control" placeholder="id" id="inputDefault" onChange={(e) => {this.setState({id:e.target.value})}}/>
         </div>
         <div className="form-group">
           <label className="col-form-label mt-4" for="inputDefault">Nome</label>
@@ -58,4 +90,6 @@ export default class UpdateMovie extends React.Component {
     );
   }
 }
+
+
 

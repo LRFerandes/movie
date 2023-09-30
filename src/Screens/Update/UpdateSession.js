@@ -16,6 +16,16 @@ export default class UpdateSession extends React.Component{
     }
 
     create = () => {
+
+      const errors = this.validate();
+
+      if(errors.length > 0){
+        errors.forEach( (message, index) => {
+            showErrorMessage(message);
+        } );
+        return false;
+    }
+
       const SessionDto = {
         horario:this.state.horario,
         data:this.state.data,
@@ -34,21 +44,46 @@ export default class UpdateSession extends React.Component{
       });
       
     };
+
+    validate = () => {
+
+      const errors = [];
+
+      if(!this.state.id){
+        errors.push('Campo id é obrigatório!');
+    }
+  
+      if(!this.state.horario){
+          errors.push('Campo Horario é obrigatório!');
+      }
+  
+      if(!this.state.data){
+          errors.push('Campo data é obrigatório!');
+      }
+
+      if(!this.state.local){
+        errors.push('Campo local é obrigatório!');
+    }
+  
+      return errors;
+
+    }
     render() {
         return (
          
           <div className='main'>
+            <h1>Update Session</h1>
             <div className="form-group">
               <label className="col-form-label mt-4" for="inputDefault">id</label>
               <input type="number" className="form-control" placeholder="horario" id="inputDefault" onChange={(e) => {this.setState({id:e.target.value})}}/>
             </div>
             <div className="form-group">
               <label className="col-form-label mt-4" for="inputDefault">horario</label>
-              <input type="text" className="form-control" placeholder="horario" id="inputDefault" onChange={(e) => {this.setState({horario:e.target.value})}}/>
+              <input type="time" className="form-control" placeholder="horario" id="inputDefault" onChange={(e) => {this.setState({horario:e.target.value})}}/>
             </div>
             <div className="form-group">
               <label className="col-form-label mt-4" for="inputDefault">data</label>
-              <input type="text" className="form-control" placeholder="data" id="inputDefault"
+              <input type="date" className="form-control" placeholder="data" id="inputDefault"
               onChange={(e) => {this.setState({data:e.target.value})}}/>
             </div>
             <div className="form-group">
@@ -63,3 +98,5 @@ export default class UpdateSession extends React.Component{
         );
       }
 }
+
+
