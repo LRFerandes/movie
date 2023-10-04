@@ -3,6 +3,7 @@ import 'bootswatch/dist/simplex/bootstrap.css';
 import axios from 'axios';
 
 import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
+import MovieApiService from '../../Service/MovieApiService';
 
 
 export default class UpdateMovie extends React.Component {
@@ -15,6 +16,11 @@ export default class UpdateMovie extends React.Component {
 
 
   }
+
+  constructor(){
+    super();
+    this.service = new MovieApiService();
+}
 
   create = () => {
 
@@ -33,9 +39,10 @@ export default class UpdateMovie extends React.Component {
     };
 
 
-    axios.put(`http://localhost:8080/Movie/${this.state.id}`, MovieDto,{
-      'Content-Type': 'application/json',
-    })
+   // axios.put(`http://localhost:8080/Movie/${this.state.id}`, MovieDto,{
+   //   'Content-Type': 'application/json',
+   // })
+   this.service.update(this.state.id, MovieDto)
     .then(response => {
       showSuccessMessage("");
     })

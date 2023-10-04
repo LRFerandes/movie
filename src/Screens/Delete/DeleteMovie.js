@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
 
+import MovieApiService from '../../Service/MovieApiService';
+
+
 
 export default class DeleteMovie extends React.Component {
 
@@ -14,7 +17,10 @@ export default class DeleteMovie extends React.Component {
 
 
   }
-
+  constructor(){
+    super();
+    this.service = new MovieApiService();
+}
   delete = () => {
 
     const errors = this.validate();
@@ -26,8 +32,7 @@ export default class DeleteMovie extends React.Component {
         return false;
     }
 
-    axios.delete(`http://localhost:8080/Movie/${this.state.id}`,
-    )
+    this.service.delete(this.state.id)
     .then(response => {
       showSuccessMessage("");
     })

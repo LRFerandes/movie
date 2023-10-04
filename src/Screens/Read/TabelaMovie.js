@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 import 'bootswatch/dist/simplex/bootstrap.css';
+import MovieApiService from '../../Service/MovieApiService';
 
 class TabelaMovie extends Component {
 
@@ -14,12 +15,20 @@ class TabelaMovie extends Component {
     
       }
 
+      constructor(){
+        super();
+        this.service = new MovieApiService();
+    }
+
       componentDidMount() {
         this.buscarUsuarios(); 
       }
+      
 
       buscarUsuarios() {
-        axios.get('http://localhost:8080/Movie')
+       // axios.get('http://localhost:8080/Movie')
+
+       this.service.find('')
           .then(response => {
             const Movies = response.data;
             this.setState({ Movie:Movies });
@@ -29,6 +38,11 @@ class TabelaMovie extends Component {
             console.error('Erro ao buscar os dados:', error);
           });
       }
+
+
+
+
+
   render() {
 
     const { Movie } = this.state;

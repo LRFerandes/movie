@@ -3,6 +3,7 @@ import 'bootswatch/dist/simplex/bootstrap.css';
 import axios from 'axios';
 
 import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
+import SessionApiService from '../../Service/SessionApiService';
 
 
 export default class DeleteSession extends React.Component {
@@ -12,6 +13,11 @@ export default class DeleteSession extends React.Component {
     id:0
 
   }
+
+  constructor(){
+    super();
+    this.service = new SessionApiService();
+}
 
   delete = () => {
 
@@ -24,7 +30,7 @@ export default class DeleteSession extends React.Component {
         return false;
     }
 
-    axios.delete(`http://localhost:8080/Session/${this.state.id}`,)
+    this.service.delete(this.state.id)
     .then(response => {
       showSuccessMessage("");
     })

@@ -3,6 +3,7 @@ import 'bootswatch/dist/simplex/bootstrap.css';
 import axios from 'axios';
 
 import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
+import SessionApiService from '../../Service/SessionApiService';
 
 
 export default class UpdateSession extends React.Component{
@@ -14,6 +15,11 @@ export default class UpdateSession extends React.Component{
         local:''
 
     }
+
+    constructor(){
+      super();
+      this.service = new SessionApiService();
+  }
 
     create = () => {
 
@@ -33,9 +39,10 @@ export default class UpdateSession extends React.Component{
       };
   
   
-      axios.put(`http://localhost:8080/Session/${this.state.id}`,SessionDto, {
-        'Content-Type': 'application/json',
-      })
+     // axios.put(`http://localhost:8080/Session/${this.state.id}`,SessionDto, {
+      //  'Content-Type': 'application/json',
+     // })
+      this.service.update(this.state.id,SessionDto)
       .then(response => {
         showSuccessMessage("");
       })

@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import { showSuccessMessage, showErrorMessage, showWarningMessage } from '../Components/Toastr';
 
+import MovieApiService from '../../Service/MovieApiService';
+
 export default class CreateMovie extends React.Component {
 
   state = {
@@ -13,7 +15,10 @@ export default class CreateMovie extends React.Component {
 
 
   }
-
+  constructor(){
+    super();
+    this.service = new MovieApiService();
+}
   create = () => {
 
     const errors = this.validate();
@@ -31,9 +36,7 @@ export default class CreateMovie extends React.Component {
     };
 
 
-    axios.post('http://localhost:8080/Movie', MovieDto,{
-      'Content-Type': 'application/json',
-    })
+    this.service.create(MovieDto)
     .then(response => {
       showSuccessMessage("");
     })

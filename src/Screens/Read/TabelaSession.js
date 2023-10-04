@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 import 'bootswatch/dist/simplex/bootstrap.css';
+import SessionApiService from '../../Service/SessionApiService';
 
 class TabelaSession extends Component {
 
@@ -13,12 +14,18 @@ class TabelaSession extends Component {
     
       }
 
+      constructor(){
+        super();
+        this.service = new SessionApiService();
+    }
+
       componentDidMount() {
         this.buscarUsuarios(); 
       }
 
       buscarUsuarios() {
-        axios.get('http://localhost:8080/Session')
+        //axios.get('http://localhost:8080/Session')
+        this.service.find('')
           .then(response => {
             const Movies = response.data;
             this.setState({ Movie:Movies });
@@ -28,6 +35,7 @@ class TabelaSession extends Component {
             console.error('Erro ao buscar os dados:', error);
           });
       }
+
   render() {
 
     const { Movie } = this.state;
