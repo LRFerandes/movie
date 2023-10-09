@@ -15,10 +15,12 @@ export default class CreateMovie extends React.Component {
 
 
   }
+
   constructor(){
     super();
     this.service = new MovieApiService();
 }
+
   create = () => {
 
     const errors = this.validate();
@@ -34,7 +36,7 @@ export default class CreateMovie extends React.Component {
       nome:this.state.nome,
       genero:this.state.genero
     };
-
+   
 
     this.service.create(MovieDto)
     .then(response => {
@@ -43,7 +45,6 @@ export default class CreateMovie extends React.Component {
     .catch(error => {
       showErrorMessage("");
     });
-    
   };
 
   validate = () => {
